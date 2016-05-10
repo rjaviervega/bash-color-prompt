@@ -1,3 +1,9 @@
+#
+# Note: This version of .bash_profile does not check for branch
+# status on prompt. This is useful for large git repositories
+# which take a long time to run `git status`.
+#
+
 PATH="/opt/local/bin:/Users/javiervega/.apportable/SDK/bin:$PATH"
 
 alias p="pwd"
@@ -15,7 +21,7 @@ function parse_git_dirty {
 [[ $(/usr/bin/git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
 function parse_git_branch {
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1]/"
 }
 
 ############################################
