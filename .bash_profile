@@ -69,4 +69,4 @@ esac
 }
 PROMPT_COMMAND=prompt_command
 
-
+export HISTCONTROL=ignoreboth:erasedups
